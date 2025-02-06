@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>customer</title>
+</head>
+<body>
+<form method="POST" th:action="@{/insert}" th:object="${customer}">
+  <div><label for="id">ID:</label> <input type="number" id="id" th:field="${customer.id}" placeholder="Inserisci ID"/></div>
+  <div><label for="name">Nome:</label> <input type="text" id="name" th:field="${customer.name}" placeholder="Inserisci il nome" required/></div>
+  <div><label for="surname">Cognome:</label> <input type="text" id="surname" th:field="${customer.surname}" placeholder="Inserisci cognome" required/></div>
+  <div><label for="gender">Sesso:</label> <input type="text" id="gender" th:field="${customer.gender}" placeholder="Inserisci il tuo genere" required/></div>
+
+  <div><label for="age">Età:</label> <input type="text" id="age" th:field="${customer.age}" placeholder="Inserisci età" required/></div>
+
+  <div>
+    <button type="submit">Salva customer</button>
+  </div>
+</form>
+
+
+</body>
+</html>
