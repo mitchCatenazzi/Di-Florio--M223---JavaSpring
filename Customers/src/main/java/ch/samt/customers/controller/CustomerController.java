@@ -41,20 +41,19 @@ public class CustomerController {
     }
 
     @GetMapping("/customers")
-    public String customerList(Model model, @RequestParam("id") Long userId) {
-        //model.addAttribute("customers", customers);
+    public String customerList(Model model, @RequestParam(value = "id", required = false) Long userId) {
 
-        //nell'url, inserire dopo customers ?id=ID DELL'UTENTE
-        for (Customer customer : customers) {
-            if (userId.equals(customer.getId())) {
-                model.addAttribute("customers", customer);
+        if (userId != null) {
+            //nell'url, inserire dopo customers ?id=ID DELL'UTENTE
+            for (Customer customer : customers) {
+                if (userId.equals(customer.getId())) {
+                    model.addAttribute("customers", customer);
+                }
             }
+        } else {
+            model.addAttribute("customers", customers);
         }
+
         return "customerList";
     }
-
-
-
-
-
 }
