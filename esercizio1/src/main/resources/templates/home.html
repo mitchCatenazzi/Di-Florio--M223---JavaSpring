@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p>HELLO</p>
+    <p th:text="${nome}"> </p>
+
+
+    <form th:action="@{/user/insert}" method="POST">
+        <button type="submit">vai all'insert</button>
+    </form>
+
+</body>
+</html>
