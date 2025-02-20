@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<table>
+    <thead>
+    <tr>
+        <th>
+            ID
+        </th>
+
+        <th>
+            Nome
+        </th>
+
+        <th>
+            Tipo
+        </th>
+
+        <th>
+            Costo
+        </th>
+
+
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <tr th:each="game : ${games}">
+        <td th:text="${game.id}"></td>
+        <td th:text="${game.title}"></td>
+        <td th:text="${game.type}"></td>
+        <td th:text="${game.price}"></td>
+    </tr>
+
+    </tbody>
+</table>
+
+</body>
+</html>

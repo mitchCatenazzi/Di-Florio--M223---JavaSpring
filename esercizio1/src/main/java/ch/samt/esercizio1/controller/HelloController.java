@@ -52,4 +52,27 @@ public class HelloController {
         return "redirect:/user/insert";
     }
 
+
+    @GetMapping("/user/load")
+    public String UserName(Model model, @RequestParam(value = "userId", required = false) Integer userId) {
+
+        if (userId != null) {
+            //nell'url, inserire dopo customers ?id=ID DELL'UTENTE
+            for (User customer : users.values()) {
+                if (userId.equals(customer.getId())) {
+                    model.addAttribute("user", users);
+                }
+            }
+        } else {
+            model.addAttribute("user", users);
+        }
+
+        return "addName";
+
+    }
+
+
+
+
+
 }
