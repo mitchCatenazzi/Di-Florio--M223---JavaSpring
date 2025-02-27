@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<table>
+    <thead>
+    <tr>
+        <th>
+            ID
+        </th>
+
+        <th>
+            Nome
+        </th>
+
+        <th>
+            prezzo
+        </th>
+
+        <th>
+            expirationDay
+        </th>
+
+
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <tr th:each="product : ${products}">
+        <td th:text="${product.id}"></td>
+        <td th:text="${product.title}"></td>
+        <td th:text="${product.price}"></td>
+        <td th:text="${product}"></td>
+    </tr>
+
+    </tbody>
+</table>
+
+</body>
+</html>

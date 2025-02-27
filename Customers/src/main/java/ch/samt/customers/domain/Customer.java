@@ -1,15 +1,24 @@
 package ch.samt.Customers.domain;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 //@Data
 public class Customer {
 
+    @NotNull
     private Long id;
 
+    @NotBlank
+    @Size(min = 2, max = 20,message = "lunghezza da 2 a 20 caratteri")
     private String name;
 
+    @NotBlank
+    @Size(min = 2, max = 20,message = "lunghezza da 2 a 20 caratteri")
     private String surname;
+
 
     private String gender;
 
