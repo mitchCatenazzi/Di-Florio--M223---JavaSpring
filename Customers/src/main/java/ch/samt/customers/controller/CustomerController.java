@@ -1,6 +1,8 @@
 package ch.samt.Customers.controller;
 
+import ch.samt.Customers.data.CustomerRepository;
 import ch.samt.Customers.domain.Customer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,13 +11,32 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
 @Controller
 public class CustomerController {
 
-    List<Customer> customers = new ArrayList<Customer>();
+    private CustomerRepository customerRepository;
+
+    @Autowired
+    public CustomerController(CustomerRepository customerRepository){
+        this.customerRepository = customerRepository;
+    }
+
+    private final List<Customer> customers = new ArrayList<Customer>(
+            Arrays.asList(
+                    new Customer(1L,"Maria","Rossi","Rossi@gmail.com", 55),
+                    new Customer(2L,"Giorgia","Verdi", "gianni",30),
+                    new Customer(3L,"Ennio","Bianchi","enniio",33)
+    ));
+
+//    @GetMapping
+//    public String loadCustomers(Model model) {
+//        model.addAttribute("customers", customerRepository.findAll());
+//        return "customerList";
+//    }
 
     @GetMapping("/")
     public String home(Model model) {
@@ -36,7 +57,8 @@ public class CustomerController {
 
     @PostMapping("/insert")
     public String saveCustomer(@ModelAttribute Customer customer) {
-        customers.add(customer);
+        customerRepository.save(customer);
+        //customers.add(customer);
         return "redirect:/customers";
     }
 
