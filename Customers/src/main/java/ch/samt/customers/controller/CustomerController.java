@@ -25,12 +25,13 @@ public class CustomerController {
         this.customerRepository = customerRepository;
     }
 
-    private final List<Customer> customers = new ArrayList<Customer>(
-            Arrays.asList(
-                    new Customer(1L,"Maria","Rossi","Rossi@gmail.com", 55),
-                    new Customer(2L,"Giorgia","Verdi", "gianni",30),
-                    new Customer(3L,"Ennio","Bianchi","enniio",33)
-    ));
+
+//    private final List<Customer> customers = new ArrayList<Customer>(
+//            Arrays.asList(
+//                    new Customer(1L,"Maria","Rossi","Rossi@gmail.com", 55),
+//                    new Customer(2L,"Giorgia","Verdi", "gianni",30),
+//                    new Customer(3L,"Ennio","Bianchi","enniio",33)
+//    ));
 
 //    @GetMapping
 //    public String loadCustomers(Model model) {
@@ -66,17 +67,12 @@ public class CustomerController {
     public String customerList(Model model, @RequestParam(value = "id", required = false) Long userId) {
         // Controlliamo se l'utente ha specificato un ID nella richiesta (ad esempio: /customers?id=1)
         if (userId != null) {
-            // Iteriamo la lista di tutti i clienti per trovare quello con l'ID corrispondente
-            for (Customer customer : customers) {
-                // Se l'ID dell'utente corrisponde a quello del cliente
-                if (userId.equals(customer.getId())) {
-                    // Aggiungiamo il cliente corrispondente al modello come attributo "customers"
-                    model.addAttribute("customers", customer);
-                }
-            }
-        } else {
+            // Aggiungiamo il cliente corrispondente al modello come attributo "customers"
+            model.addAttribute("customers", customerRepository.findById(userId));
+        }
+        else {
             // Se non è stato fornito alcun ID, passiamo l'intera lista dei clienti al modello
-            model.addAttribute("customers", customers);
+            model.addAttribute("customers", customerRepository.findAll());
         }
 
         // Restituiamo il nome della vista "customerList" che sarà elaborata da Thymeleaf
