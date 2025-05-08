@@ -1,97 +1,40 @@
 package ch.samt.Customers.domain;
-
-import jakarta.validation.constraints.NotBlank;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
+import lombok.NoArgsConstructor;
+import jakarta.persistence.Id;
 
-//@Data
-//@AllArgsConstructor
+import java.math.BigInteger;
+
+
+@Data
+@AllArgsConstructor //costruttore con gli attributi
+@NoArgsConstructor // costruttore vuoto
+@Entity
 public class Customer {
-
-
-    //@NotNull
     @Id
-    private Long id;
-
-    @NotBlank
-    @Size(min = 2, max = 20,message = "lunghezza da 2 a 20 caratteri")
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "customer_seq")
+    @SequenceGenerator(name ="customer_seq", sequenceName = "customer_seq", allocationSize = 1)
+    private Integer id;
+    @NotNull
+    @Size(min = 2, max = 10, message = "Lunghezza tra 2 e 10 caratteri")
     private String name;
-
-    @NotBlank
-    @Size(min = 2, max = 20,message = "lunghezza da 2 a 20 caratteri")
+    @NotNull
+    @Size(min = 2, max = 10, message = "Lunghezza tra 2 e 10 caratteri")
     private String surname;
-
     private String gender;
-
+    @NotNull
+    @Min(18)
+    @Max(99)
     private Integer age;
 
-    public Customer(Long id, String name, String surname, String gender, Integer age) {
-        this.id = id;
-        this.name = name;
-        this.surname = surname;
-        this.gender = gender;
-        this.age = age;
-    }
-
-    public Customer(Long id, String name, String surname, Integer age) {
-        this.id = id;
-        this.name = name;
-        this.surname = surname;
-        this.age = age;
-    }
-
-
-    public Customer(Long id) {
-        this.id = id;
-    }
-
-    public Customer() {
-
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
 
 }
-
-

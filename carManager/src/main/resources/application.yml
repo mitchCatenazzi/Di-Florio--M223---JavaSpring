@@ -1,0 +1,43 @@
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    # url: jdbc:h2:mem:mydb
+    url: jdbc:h2:file:./h2_file/car
+    driver-class-name: org.h2.Driver
+    username: myuser
+    password: mypwd
+  sql:
+    init:
+      mode: always # necessario per la configurazione con persistenza su file
+      data-locations:
+        - classpath:/db/carsDev.sql
+      schema-locations:
+        - classpath:/db/carSchema.sql
+server:
+  port: 8080
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    # url: jdbc:h2:mem:mydb
+    url: jdbc:h2:file:./h2_file/car
+    driver-class-name: org.h2.Driver
+    username: myuser
+    password: mypwd
+  sql:
+    init:
+      mode: always # necessario per la configurazione con persistenza su file
+      data-locations:
+        - classpath:/db/carsProd.sql
+      schema-locations:
+        - classpath:/db/carSchema.sql
+server:
+  port: 8088
+
+

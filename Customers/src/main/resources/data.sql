@@ -1,4 +1,5 @@
 delete from Customer;
-insert into Customer (name, surname, age, gender)values ( 'Mario', 'Rossi', 24, 'uomo'),
-                                                    ('Guido', 'Bianchi', 34, 'uomo'),
-                                                    ('Gino', 'Verdi', 57, 'uomo');
+insert into Customer (id, name, surname,gender, age)values
+(NEXT VALUE FOR customer_log, 'Mario', 'Rossi','Male', 24),
+(NEXT VALUE FOR customer_log, 'Guido', 'Bianchi', 'Male',34),
+(NEXT VALUE FOR customer_log, 'Gino', 'Verdi', 'Female',57);

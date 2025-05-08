@@ -1,50 +1,28 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head><title>Customer salvato</title></head>
-<body><h1>Il customer è stato aggiunto ai customers</h1></body>
-
-<table>
-    <thead>
-    <tr>
-        <th>
-            ID
-        </th>
-
-        <th>
-            Nome
-        </th>
-
-        <th>
-            Cognome
-        </th>
-
-        <th>
-            Sesso
-        </th>
-
-        <th>
-            Età
-        </th>
-    </tr>
-    </thead>
-
-    <tbody>
-
-    <tr th:each="customer : ${customers}">
-
-        <td th:text="${customer.id}"></td>
-        <td th:text="${customer.name}"></td>
-        <td th:text="${customer.surname}"></td>
-        <td th:text="${customer.gender}"></td>
-        <td th:text="${customer.age}"></td>
-
-    </tr>
-
-    </tbody>
-</table>
-
-<form th:action="@{/backHome}" method="POST">
-    <button type="submit">Torna all'insert</button>
-</form>
-
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer</title>
+</head>
+<body>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Age</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="customer : ${customers}" >
+            <td th:text="${customer.id}"></td>
+            <td th:text="${customer.name}"></td>
+            <td th:text="${customer.surname}"></td>
+            <td th:text="${customer.gender}"></td>
+            <td th:text="${customer.age}"></td>
+        </tr>
+        </tbody>
+    </table>
+</body>
 </html>

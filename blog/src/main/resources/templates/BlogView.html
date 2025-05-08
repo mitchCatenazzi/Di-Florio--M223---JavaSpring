@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f8;
+            margin: 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        thead {
+            background-color: #4a90e2;
+            color: white;
+        }
+
+        th, td {
+            padding: 14px 20px;
+            text-align: left;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid #ddd;
+        }
+
+        tbody tr:hover {
+            background-color: #f0f8ff;
+        }
+
+        th {
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        td {
+            color: #333;
+        }
+
+        @media (max-width: 768px) {
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+
+            thead {
+                display: none;
+            }
+
+            tr {
+                margin-bottom: 15px;
+                background: white;
+                border-radius: 10px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                padding: 10px;
+            }
+
+            td {
+                padding: 10px;
+                position: relative;
+            }
+
+            td::before {
+                content: attr(data-label);
+                font-weight: bold;
+                color: #555;
+                display: block;
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+<h2 style="text-align: center; color: #333;">Lista Blog</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Published</th>
+        <th>Category</th>
+        <th>Author</th>
+        <th>Likes</th>
+        <th>Content</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="blog : ${blogs}">
+        <td data-label="Title" th:text="${blog.title}"></td>
+        <td data-label="Published" th:text="${blog.publishedDate}"></td>
+        <td data-label="Category" th:text="${blog.category}"></td>
+        <td data-label="Author" th:text="${blog.author}"></td>
+        <td data-label="Likes" th:text="${blog.likes}"></td>
+        <td data-label="Content" th:text="${blog.content}"></td>
+    </tr>
+    </tbody>
+</table>
+
+
+<form th:action="@{/blog/new}" method="POST">
+    <button type="submit">vai all'insert</button>
+</form>
+</body>
+</html>

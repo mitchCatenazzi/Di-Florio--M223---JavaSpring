@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<table>
+  <thead>
+  <tr>
+    <th>id</th>
+    <th>color</th>
+    <th>carMaker</th>
+    <th>model</th>
+    <th>HP</th>
+    <th>price</th>
+    <th>registrationDate</th>
+  </tr>
+  </thead>
+  <tbody>
+
+  <tr th:each="car : ${cars}">
+    <td th:text="${car.id}"></td>
+    <td th:text="${car.color}"></td>
+    <td th:text="${car.carMaker}"></td>
+    <td th:text="${car.model}"></td>
+    <td th:text="${car.horsePower}"></td>
+    <td th:text="${car.price}"></td>
+    <td th:text="${car.registrationDate}"></td>
+
+  </tr>
+
+  </tbody>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>BookList</title>
+</head>
+<body>
+<p> Aggiungi un BLOG! </p>
+<form method="POST" th:action="@{/insert}" th:object="${blog}">
+
+    <div>
+        <label for="title">Titolo:</label>
+        <input type="text" id="title" th:field="${blog.title}" placeholder="Inserisci il titolo" required/>
+    </div>
+
+    <div>
+        <label for="date">Data:</label>
+        <input type="date" id="date" th:field="${blog.publishedDate}" placeholder="Inserisci la data" required/>
+    </div>
+
+
+    <div>
+        <label for="category">Categoria:</label>
+        <input type="text" id="category" th:field="${blog.category}" placeholder="Inserisci la categoria" required/>
+    </div>
+
+    <div>
+        <label for="author">Autore:</label>
+        <input type="text" id="author" th:field="${blog.author}" placeholder="Inserisci l'autore" required/>
+    </div>
+
+    <div>
+        <label for="likes">Likes:</label>
+        <input type="number" id="likes" th:field="${blog.likes}"/>
+    </div>
+
+    <div>
+        <label for="content">Contenuto:</label>
+        <input type="text" id="content" th:field="${blog.content}"  placeholder="Inserisci il contenuto" required/>
+    </div>
+
+    <div>
+        <button type="submit">Salva il blog</button>
+    </div>
+</form>
+</body>
+</html>

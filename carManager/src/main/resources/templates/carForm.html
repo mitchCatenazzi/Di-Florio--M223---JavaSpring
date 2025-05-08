@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="POST" th:object="${car}" th:action="@{/insert}">
+
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" th:field="${customer.name}"/>
+        <span class="validationError" th:if="${#fields.hasErrors('name')}"
+              th:errors="${customer.name}">Name Error</span>
+    </div>
+
+    <div>
+        <label for="surname">Cognome:</label>
+        <input type="text" id="surname" th:field="${customer.surname}" placeholder="Inserisci cognome" required/>
+    </div>
+
+    <div><label for="age">Età:</label> <input type="text" id="age" th:field="${customer.age}" placeholder="Inserisci età" required/></div>
+
+    <div>
+        <label for="gender">Sesso</label>
+        <input type="text" id="gender" th:field="${customer.gender}" placeholder="Inserisci genere" required/>
+    </div>
+
+
+    <div>
+        <button type="submit">Salva car</button>
+    </div>
+
+</form>
+</body>
+</html>
