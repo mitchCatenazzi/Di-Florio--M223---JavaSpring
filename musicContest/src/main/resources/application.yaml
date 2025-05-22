@@ -1,0 +1,29 @@
+spring:
+  sql:
+    init:
+      data-locations:
+        - classpath:db/singerData.sql
+        - classpath:db/judgeData.sql
+  jpa:
+    hibernate:
+      ddl-auto: update # per db relazionale sennò -> validate
+    defer-datasource-initialization: true # Hybernate popola le tabelle dopo averle create
+
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: dev
+server:
+  port: 8088
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: prod
+server:
+  port: 8080

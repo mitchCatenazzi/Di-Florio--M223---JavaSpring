@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>addSinger</title>
+</head>
+<body>
+<form method="POST" th:object="${singer}" th:action="@{/contest/add-artist}">
+
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" th:field="${singer.name}"/>
+  </div>
+
+  <div>
+    <label for="surname">Surname:</label>
+    <input type="text" id="surname" th:field="${singer.surname}" placeholder="insert surname" required/>
+  </div>
+
+  <div>
+    <label for="MusicalGenre">Musical Gender:</label>
+    <input type="text" id="MusicalGenre" th:field="${singer.musicalGenre}" placeholder="insert a musical genre" required/>
+  </div>
+
+  <div>
+    <button type="submit">Save singer</button>
+  </div>
+
+</form>
+
+
+<div th:fragment="footer">
+  <footer style="text-align:center; padding: 1rem; background-color: #f0f0f0;">
+    <a href="/contest/ranking">Singers </a> |
+    <a href="/contest/judges">Judges</a> |
+    <a href="/contest/add-artist">add an artist</a>
+  </footer>
+</div>
+
+</body>
+</html>

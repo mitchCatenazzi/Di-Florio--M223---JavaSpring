@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Book Status</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f2f5;
+      margin: 0; padding: 20px;
+    }
+    .container {
+      max-width: 700px;
+      background: white;
+      padding: 30px;
+      margin: 40px auto;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+    h1, h2 {
+      color: #007bff;
+    }
+    .info {
+      margin-bottom: 20px;
+    }
+    label {
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <h1>Book Status</h1>
+
+  <div class="info">
+    <h2>Book Details</h2>
+    <p><label>Author:</label> <span th:text="${book.author}"></span></p>
+    <p><label>Title:</label> <span th:text="${book.name}"></span></p>
+    <p><label>Storyline:</label> <span th:text="${book.storyline}"></span></p>
+    <p><label>Type:</label> <span th:text="${book.type}"></span></p>
+  </div>
+
+  <!-- mostro all'utente la parte della riservazione solo se questa non è vuota -->
+  <div th:if="${reservation != null}">
+    <h2>Reservation Details</h2>
+    <p><label>Reservation Date:</label> <span th:text="${reservation.registrationDate}"></span></p>
+    <p><label>Expiration Date:</label> <span th:text="${reservation.expirationDate}"></span></p>
+
+    <h2>User Details</h2>
+    <p><label>Name:</label> <span th:text="${user.name} + ' ' + ${user.surname}"></span></p>
+    <p><label>Email:</label> <span th:text="${user.email}"></span></p>
+    <p><label>Borrowed Books:</label> <span th:text="${user.borrowedBooks}"></span></p>
+  </div>
+
+  <div th:if="${message != null}">
+    <p th:text="${message}"></p>
+  </div>
+
+  <div th:if="${errorMessage != null}">
+    <p style="color: red;" th:text="${errorMessage}"></p>
+  </div>
+
+  <a href="/books/list">Back to list</a>
+</div>
+
+</body>
+</html>

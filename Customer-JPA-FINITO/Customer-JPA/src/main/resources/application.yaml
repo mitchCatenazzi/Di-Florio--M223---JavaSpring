@@ -1,0 +1,12 @@
+spring:
+  sql:
+    init:
+      data-locations:
+        - classpath:db/addressData.sql
+        - classpath:db/customerData.sql
+        - classpath:db/reservationData.sql
+        - classpath:db/customerGroupData.sql
+  jpa:
+    hibernate:
+      ddl-auto: update # per db relazionale sennò -> validate
+    defer-datasource-initialization: true # Hybernate popola le tabelle dopo averle create

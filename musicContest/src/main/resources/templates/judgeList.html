@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Judges</title>
+</head>
+<body>
+
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Surname</th>
+    <th>has voted</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="judge : ${judges}">
+    <td th:text="${judge.name}"></td>
+    <td th:text="${judge.surname}"></td>
+    <td th:text="${judge.hasVoted}"></td>
+
+  </tr>
+  </tbody>
+</table>
+
+<div th:fragment="footer">
+  <footer style="text-align:center; padding: 1rem; background-color: #f0f0f0;">
+    <a href="/contest/ranking">Singers </a> |
+    <a href="/contest/judges">Judges</a> |
+    <a href="/contest/add-artist">add an artist</a>
+  </footer>
+</div>
+
+</body>
+</html>

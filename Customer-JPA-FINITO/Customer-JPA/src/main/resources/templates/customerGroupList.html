@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customers</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Sfondo leggero */
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .table {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 class="text-center mb-4 text-decoration-underline">Customer List</h2>
+
+    <div th:each="customerGroup : ${customerGroups}">
+        <div th:text="'Ospiti del gruppo ' + ${customerGroup.name} + ':'">
+            <table>
+                <tbody>
+                    <tr th:each="customer : ${customerGroup.customers}">
+                        <td th:text="${customer.name}"></td>
+                        <td th:text="${customer.surname}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="/js/bootstrap.min.js"></script>
+
+<div th:fragment="footer">
+    <footer style="text-align:center; padding: 1rem; background-color: #f0f0f0;">
+        <a href="/customers">Clienti</a> |
+        <a href="/customers/reservation">Prenotazioni</a> |
+        <a href="/customers/customer-groups">Gruppi</a> |
+        <a href="/customers/insert">Nuovo Cliente</a>
+    </footer>
+</div>
+
+</body>
+</html>

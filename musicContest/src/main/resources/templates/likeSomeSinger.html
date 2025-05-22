@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LikeArtists</title>
+</head>
+<body>
+
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>musical Genre</th>
+        <th>VOTE!</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="singer : ${singers}">
+        <td th:text="${singer.name}"></td>
+        <td th:text="${singer.surname}"></td>
+        <td th:text="${singer.musicalGenre}"></td>
+        <td>
+            <form method="POST" th:object="${singer}" th:action="@{/contest/add-artist}">
+            <a>Like</a>
+            </form>
+        </td>
+
+    </tr>
+    </tbody>
+</table>
+
+
+<div th:fragment="footer">
+    <footer style="text-align:center; padding: 1rem; background-color: #f0f0f0;">
+        <a href="/contest/ranking">Singers </a> |
+        <a href="/contest/judges">Judges</a> |
+        <a href="/contest/add-artist">add an artist</a>
+    </footer>
+</div>
+
+</body>
+</html>

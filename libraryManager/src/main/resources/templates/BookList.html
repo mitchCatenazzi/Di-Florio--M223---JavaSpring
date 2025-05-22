@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f2f5;
+      color: #333;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 60px auto;
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #4a4a4a;
+      font-size: 2.2em;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    thead {
+      background-color: #007bff;
+      color: white;
+    }
+
+    th, td {
+      padding: 16px;
+      text-align: left;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    tbody tr:hover {
+      background-color: #f9f9f9;
+    }
+
+    th:first-child, td:first-child {
+      border-left: 4px solid #007bff;
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Library - Book List</h1>
+  <table>
+    <thead>
+    <tr>
+      <th>Author</th>
+      <th>Title</th>
+      <th>Storyline</th>
+      <th>Type</th>
+      <th>See Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="book : ${books}">
+      <td th:text="${book.author}" data-label="Author"></td>
+      <td th:text="${book.name}" data-label="Title"></td>
+      <td th:text="${book.storyline}" data-label="Storyline"></td>
+      <td th:text="${book.type}" data-label="Type"></td>
+      <td>
+        <form method="POST" th:action="@{/books/seeStatus}">
+          <input type="hidden" name="bookId" th:value="${book.id}" />
+          <button type="submit">View this book status</button>
+        </form>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="container">
+  <h2>MENU</h2>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>New customer</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="mb-4 text-center text-decoration-underline">Insert New Customer</h1>
+
+    <div class="d-flex justify-content-center">
+    <form method="POST" th:object="${customer}">*
+        <!-- Name Field -->
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" th:field="${customer.name}" class="form-control w-100"/>
+            <span class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="${customer.name}">Name Error</span>
+        </div>
+
+        <!-- Surname Field -->
+        <div class="form-group">
+            <label for="surname">Surname:</label>
+            <input type="text" id="surname" th:field="${customer.surname}" class="form-control w-100"/>
+            <span class="text-danger" th:if="${#fields.hasErrors('surname')}" th:errors="${customer.surname}">Surname Error</span>
+        </div>
+
+        <!-- Age Field -->
+        <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="number" id="age" th:field="${customer.age}" class="form-control w-100"/>
+            <span class="text-danger" th:if="${#fields.hasErrors('age')}" th:errors="${customer.age}">Age Error</span>
+        </div>
+
+<!--         Street Field-->
+        <div class="form-group">
+            <label for="street">Street:</label>
+            <input type="text" id="street" th:field="${customer.address.street}" class="form-control w-100"/>
+            <span class="text-danger" th:if="${#fields.hasErrors('address.street')}" th:errors="${customer.address.street}">Street Error</span>
+        </div>
+
+        <!-- Number Field -->
+        <div class="form-group">
+            <label for="num">Number:</label>
+            <input type="text" id="num" th:field="${customer.address.num}" class="form-control w-100"/>
+            <span class="text-danger" th:if="${#fields.hasErrors('address.num')}" th:errors="${customer.address.num}">Number Error</span>
+        </div>
+
+        <!-- ZIP Field -->
+        <div class="form-group">
+            <label for="zip">Zip:</label>
+            <input type="text" id="zip" th:field="${customer.address.zip}" class="form-control w-100"/>
+            <span class="text-danger" th:if="${#fields.hasErrors('address.zip')}" th:errors="${customer.address.zip}">Zip Error</span>
+        </div>
+
+        <!-- City Field -->
+        <div class="form-group">
+            <label for="city">City:</label>
+            <input type="text" id="city" th:field="${customer.address.city}" class="form-control w-100"/>
+            <span class="text-danger" th:if="${#fields.hasErrors('address.city')}" th:errors="${customer.address.city}">City Error</span>
+        </div>
+
+        <!-- Nation Field -->
+        <div class="form-group">
+            <label for="nation">Nation:</label>
+            <input type="text" id="nation" th:field="${customer.address.nation}" class="form-control w-100"/>
+            <span class="text-danger" th:if="${#fields.hasErrors('address.nation')}" th:errors="${customer.address.nation}">Nation Error</span>
+        </div>
+
+        <br>
+
+        <!-- Submit Button -->
+        <div class="form-group d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </form>
+</div>
+<script src="/js/bootstrap.min.js"></script>
+
+    <div th:fragment="footer">
+        <footer style="text-align:center; padding: 1rem; background-color: #f0f0f0;">
+            <a href="/customers">Clienti</a> |
+            <a href="/customers/reservation">Prenotazioni</a> |
+            <a href="/customers/customer-groups">Gruppi</a> |
+            <a href="/customers/insert">Nuovo Cliente</a>
+        </footer>
+    </div>
+
+</body>
+</html>
